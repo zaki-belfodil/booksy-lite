@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block main%}
+<form action="/type" method ="POST">
+    <h1>How do you want to use your account?</h1>
+    <div class="center">
+        <button type="submit" value="owner" name="account_type">Create a business account</button>
+        <button type="submit" value="provider" name="account_type">Create a provider account</button>
+        {%if error %}
+            <p style="color:red";>{{ error }}</p>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}

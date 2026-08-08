@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block main%}
+<form action="/add_providers" method="POST">
+    <div class="center">
+        <h1>Add a provider</h1>
+        <input type="text" id="provider_id"  placeholder="Provider id" autocomplete="off" name="provider_id">        
+        <button type="submit">submit</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}

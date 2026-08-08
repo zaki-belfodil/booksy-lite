@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block main%}
+<form action="/set_owner" method="POST">
+    <div class="center">
+        <input type="text" id="business"  placeholder="Business name" autocomplete="off" name="business_name">
+        <label>Start working time:</label>
+        <input type="time" name="start_time">
+        <label>End working time:</label>
+        <input type="time" name="end_time">
+        <button type="submit">Create</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}
+

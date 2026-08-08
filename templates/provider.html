@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block main%}
+    <h1 class="text-center mb-4">Available providers</h1>
+    <div class="table-responsive">
+        <h2>Service:{{services.name}}</h2>
+        <table class="table table-hover align-middle mb-0">
+            <tr>
+                <th>Available providers</th>
+                <th>Choose</th>
+            </tr>
+
+            {% for  provider in providers %}
+                <tr>
+                    <td>{{provider.username}}</td>
+                    <td>
+                        <form action="/provider" method="POST">
+                            <input type="hidden" name="service_id" value="{{services.id}}">
+                            <input type="hidden" name="date" value="{{date}}">
+                            <input type="hidden" name="provider_id" value="{{provider.id}}">
+                            <button type="submit" class="btn-edit">Choose</button>
+                        </form>
+                    </td>
+                </tr>
+            {%endfor%}
+        </table>
+    </div>
+{% endblock %}
+

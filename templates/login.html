@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block main%}
+<form action="/login" method="POST">
+    <div class="center">
+        <input type="email" id="email"  placeholder="email" autocomplete="off" name="email">
+        <input type="password" id="password" placeholder="your password" name="password">
+        <button type="submit">submit</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}
+

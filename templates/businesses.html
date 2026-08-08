@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block main%}
+<h1 class="text-center mb-4">Your search results</h1>
+<div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+        <tr>
+            <th>The business</th>
+            <th>The owner</th>
+            <th>Select</th>
+        </tr>
+
+        {% for business in businesses %}
+            <tr>
+                <td>{{business.name}}</td>
+                <td>{{business.username}}</td>
+                <td>
+                    <form action="/businesses" method="POST">
+                        <input type="hidden" name="business_id" value="{{ business.id }}">
+                        <button type="submit" class="btn-edit">Select</button>
+                    </form>
+                </td>
+            </tr>
+            {%if error%}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+        {% endfor %} 
+
+    </table>
+</div>
+{% endblock %}
+

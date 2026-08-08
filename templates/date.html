@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block main%}
+    <h1 class="text-center mb-4">Available booking times</h1>
+    <div class="table-responsive">
+        <h2>Service: {{service.name}}</h2>
+        <p>Date: {{date}}</p>
+        <p>Provider: {{ provider.username }}</p>
+        <p>How long it takes: {{ service.duration_min}}</p>
+        <table class="table table-hover align-middle mb-0">
+            <tr>
+                <th>Available Times</th>
+                <th>Book</th>
+            </tr>
+            {% for time in times %}
+                <tr>
+                    <td>{{time.time}}</td>
+                    {% if time.available%}
+                    <td>
+                        <form action="/date" method="POST">
+                        <input type="hidden" name="service_id" value="{{service.id}}">
+                        <input type="hidden" name="date" value="{{date}}">
+                        <input type="hidden" name="provider_id" value="{{provider.id}}">
+                        <input type="hidden" name="time" value="{{time.time}}">
+                        <button type="submit" class="btn-edit">Book</button>
+                        </form>
+                    </td>
+                    {%else%}
+                    <td>
+                        <button type="button" class="time-slot disabled" disabled>Unavailable</button>
+
+                    </td>
+
+                    {%endif%}
+                </tr>
+            {% endfor %} 
+
+        </table>
+    </div>
+{% endblock %}
+

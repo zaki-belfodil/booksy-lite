@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block main%}
+<form action="/b_appointments" method="POST">
+    <h1 class="text-center mb-4">The available appointments in your business</h1>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <tr>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Provider</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+
+            {% for appointment in appointments %}
+                <tr>
+                    <td>{{appointment.username}}</td>
+                    <td>{{appointment.name}}</td>
+                    <td>{{appointment.provider}}</td>
+                    <td>{{appointment.date}}</td>
+                    <td>{{appointment.hour}}:{{appointment.min}}</td>
+                    <td>{{appointment.status}}</td>
+
+                </tr>
+            {% endfor %} 
+
+        </table>
+    </div>
+</form>
+{% endblock %}
+

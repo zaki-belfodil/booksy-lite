@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block main%}
+    <h1 class="text-center mb-4">The available providers in your business</h1>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+
+            {% for provider in providers %}
+                <tr>
+                    <td>{{provider.username}}</td>
+                    {%if provider.is_owner %}
+                    <td>
+                        <button type="button" class="time-slot disabled" disabled>Unavailable</button>
+
+                    </td>
+                    {%else%}
+                    <form action="/show_providers" method="POST">
+                    <td>
+                        <input type="hidden" name="provider_id" value="{{provider.id}}">
+                        <input type="hidden" name="action" value="delete">
+                        <button type="submit" class="btn-edit">Detele</button>
+                    </form>
+                    </td>
+
+
+                    {%endif%}
+                </tr>
+            {% endfor %}
+        </table>
+            <form action="/show_providers" method="POST">
+                <input type="hidden" name="action" value="add">
+                <button type="submit" class="btn-edit">Add a provider</button>
+            </form>
+
+    </div>
+{% endblock %}
+

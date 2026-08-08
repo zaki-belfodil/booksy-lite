@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block main%}
+<form action="/book" method="POST">
+    <div class="center">
+        <input type="hidden" name="service_id" value={{service.id}}>
+        <h1>{{service.name}}</h1>
+        <label for="birthday">Enter the appointment date:</label>
+        <input type="date" id="date"  placeholder="Enter the date" autocomplete="off" name="date">
+        
+        <button type="submit">submit</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}
+

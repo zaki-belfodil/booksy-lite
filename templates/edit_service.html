@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block main%}
+<form action="/edit" method="POST">
+    <div class="center">
+        <h1>Edit your service</h1>
+        <input type="text" id="service"  placeholder="Service name" autocomplete="off" name="service_name">
+        <input type="number" id="time"  placeholder="How much time it takes" autocomplete="off" name="time">
+        
+        <button type="submit">submit</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}

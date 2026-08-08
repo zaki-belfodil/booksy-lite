@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block main%}
+    <h1 class="text-center mb-4">The available services in the business</h1>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <tr>
+                <th>The service</th>
+                <th>How long it take's</th>
+                <th>Book</th>
+            </tr>
+
+            {% for service in services %}
+                <tr>
+                    <td>{{service.name}}</td>
+                    <td>{{service.duration_min}}</td>
+                    <td><form action="/business_appointments" method="POST">
+                            <input type="hidden" name="service_id" value="{{service.id}}">
+                            <button type="submit" class="btn-edit">Book</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %} 
+
+        </table>
+    </div>
+{% endblock %}
+
